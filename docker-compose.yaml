@@ -7,10 +7,26 @@ services:
     environment:
       kafka_ip: '0.0.0.0:9092'
 
-  consumer:
+  consumer1:
     network_mode: 'host'
     image: monstrillllo/consumer
     volumes:
-      - ./data/received.csv:/usr/src/app/data/received.csv
+      - ./data/:/usr/src/app/data/
+    environment:
+      kafka_ip: '0.0.0.0:9092'
+
+  consumer2:
+    network_mode: 'host'
+    image: monstrillllo/consumer
+    volumes:
+      - ./data/:/usr/src/app/data/
+    environment:
+      kafka_ip: '0.0.0.0:9092'
+
+  consumer3:
+    network_mode: 'host'
+    image: monstrillllo/consumer
+    volumes:
+      - ./data/:/usr/src/app/data/
     environment:
       kafka_ip: '0.0.0.0:9092'

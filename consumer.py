@@ -4,9 +4,10 @@ import os
 
 
 def consumer_get():
-    consumer = KafkaConsumer('course-topic', bootstrap_servers=f'{os.environ["kafka_ip"]}',
+    consumer = KafkaConsumer('course-topic', bootstrap_servers=f'{os.environ["KAFKA_IP"]}',
                              key_deserializer=lambda v: bytes.decode(v, encoding='utf-8'),
-                             value_deserializer=lambda v: bytes.decode(v, encoding='utf-8'))
+                             value_deserializer=lambda v: bytes.decode(v, encoding='utf-8'),
+                             group_id='group1')
     for msg in consumer:
         with open('./data/received.csv', 'a') as file:
             writer = csv.writer(file)
