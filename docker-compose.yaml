@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  producer:
+    network_mode: 'host'
+    image: monstrillllo/producer
+
+  consumer:
+    network_mode: 'host'
+    image: monstrillllo/consumer
+    volumes:
+      - ./data/received.csv:/usr/src/app/data/received.csv
