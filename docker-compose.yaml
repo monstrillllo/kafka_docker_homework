@@ -4,9 +4,13 @@ services:
   producer:
     network_mode: 'host'
     image: monstrillllo/producer
+    environment:
+      kafka_ip: '0.0.0.0:9092'
 
   consumer:
     network_mode: 'host'
     image: monstrillllo/consumer
     volumes:
       - ./data/received.csv:/usr/src/app/data/received.csv
+    environment:
+      kafka_ip: '0.0.0.0:9092'

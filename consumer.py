@@ -1,9 +1,10 @@
 from kafka import KafkaConsumer
 import csv
+import os
 
 
 def consumer_get():
-    consumer = KafkaConsumer('course-topic', bootstrap_servers='0.0.0.0:9092',
+    consumer = KafkaConsumer('course-topic', bootstrap_servers=f'{os.environ["kafka_ip"]}',
                              key_deserializer=lambda v: bytes.decode(v, encoding='utf-8'),
                              value_deserializer=lambda v: bytes.decode(v, encoding='utf-8'))
     for msg in consumer:

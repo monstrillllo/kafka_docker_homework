@@ -5,7 +5,7 @@ from kafka import KafkaProducer
 
 
 def producer_send(value_type: str, value: str, partition: int):
-    producer = KafkaProducer(bootstrap_servers='0.0.0.0:9092', value_serializer=str.encode, key_serializer=str.encode)
+    producer = KafkaProducer(bootstrap_servers=f'{os.environ["kafka_ip"]}', value_serializer=str.encode, key_serializer=str.encode)
     producer.send(topic='course-topic', value=value, key=value_type, partition=partition)
     print(f'[->]send key: {value_type}, value: {value}, partition: {partition}')
 
