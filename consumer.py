@@ -12,11 +12,10 @@ def consumer_get():
         with open('./data/received.csv', 'a') as file:
             writer = csv.writer(file)
             writer.writerow([msg.topic,
-                             msg.partition,
                              msg.key,
                              msg.value
                              ])
-        print(f'[<-]received {msg.topic}, {msg.partition}, {msg.key}, {msg.value}')
+        print(f'[<-]received {msg.topic}, {msg.key}, {msg.value}')
 
 
 def main():
